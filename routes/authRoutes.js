@@ -1,9 +1,9 @@
 const passport = require('passport');
 
-// module.exports = (app) => {
-//   app.get('/', (req, res) =>{
-//     res.send("Welcome to DSA PhotoSystem.");
-//   });
+module.exports = (app) => {
+  //   app.get('/', (req, res) =>{
+  //     res.send("Welcome to DSA PhotoSystem.");
+  //   });
 
   app.get(
     '/auth/google',
