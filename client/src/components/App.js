@@ -2,9 +2,12 @@ import React from 'react';
 
 const app = () => {
   return (
-    <div>
+    <div align = "center">
       Welcome to DSA PhotoSystem
+    <div>
+        <a href="/auth/google"> Login with Google  </a>
       </div>
+    </div>
   );
 };
 
