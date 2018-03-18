@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
-const app = () => {
-  return (
-    <div align = "center">
-      Welcome to DSA PhotoSystem
-    <div>
-        <a href="/auth/google"> Login with Google  </a>
+import Header from './Header';
+import Landing from './Landing';
+
+const Dashboard = () => <h2>Dashboard</h2>
+const SurveyNew = () => <h2>SurveyNew</h2>
+
+class app extends Component {
+  componentDidMount() {
+    this.props.fetchUser();
+  }
+  render() {
+    return (
+      <div align="center">
+        <BrowserRouter>
+          <div className="container">
+            <Header />
+            <p></p>
+            <Landing />
+            <Route exact path="/surveys" component={Dashboard} />
+            <Route path="/surveys/new" component={SurveyNew} />
+          </div>
+        </BrowserRouter>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
-export default app;
+export default connect(null, actions)(app);
