@@ -4,8 +4,7 @@ class Landing extends Component {
   render() {
     return (
       <div>
-        <h2> Welcome to DSA </h2>
-
+        <h2>Welcome to DSA Landing </h2>
       </div>
     );
   }

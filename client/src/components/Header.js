@@ -24,7 +24,7 @@ class Header extends Component {
       <nav>
         <div className="nav-wrapper">
           <Link
-          to = { this.props.user ? '/surveys' : '/' }
+          to = { this.props.user ? '/claims' : '/' }
           className="left brand-logo">
           DSA
           </Link>
