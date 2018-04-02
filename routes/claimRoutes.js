@@ -16,8 +16,8 @@ module.exports = app => {
     }).save();
   });
 
-  app.get('/api/claims',requireLogin, async(req, res) => {
-    const claims = await users.find();
+  app.get('/api/claims', requireLogin, async (req, res) => {
+    const claims = await Claim.find();
 
     res.send(claims);
   });

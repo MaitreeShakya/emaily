@@ -6,6 +6,7 @@ import { Link, withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 
 const ClaimFormReveiew = ({ onCancel, formValues, submitClaim, history }) => {
+    console.log(history);
   const reviewFields = _.map(formFields, ({ name, label }) => {
     return (
       <div key={name}>
@@ -27,7 +28,7 @@ const ClaimFormReveiew = ({ onCancel, formValues, submitClaim, history }) => {
         Back
         </button>
       <Link to='/claims'
-        onClick={() => submitClaim(formValues, history)}
+        onClick={() => submitClaim(formValues, history) && alert("Your query has been saved")}
         className="green btn-flat right white-text">
         Submit
           <i className="material-icons right">save</i>
