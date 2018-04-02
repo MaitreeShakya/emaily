@@ -15,4 +15,10 @@ module.exports = app => {
       dateCreated: Date.now()
     }).save();
   });
-};
+
+  app.get('/api/claims',requireLogin, async(req, res) => {
+    const claims = await users.find();
+
+    res.send(claims);
+  });
+}

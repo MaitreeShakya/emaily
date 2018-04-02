@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import formFields from './formFields';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 
 const ClaimFormReveiew = ({ onCancel, formValues, submitClaim, history }) => {
@@ -26,12 +26,12 @@ const ClaimFormReveiew = ({ onCancel, formValues, submitClaim, history }) => {
       >
         Back
         </button>
-      <button
+      <Link to='/claims'
         onClick={() => submitClaim(formValues, history)}
         className="green btn-flat right white-text">
         Submit
           <i className="material-icons right">save</i>
-      </button>
+      </Link>
     </div>
   );
 };
