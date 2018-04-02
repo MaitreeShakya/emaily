@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const claimSchema = new Schema({
-  claimAddress: String,
+  address: String,
+  name: String,
+  email: String,
+  company: String,
   dateCreated: Date,
 });
 

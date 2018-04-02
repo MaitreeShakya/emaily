@@ -18,13 +18,14 @@ module.exports = (app) => {
     (req, res) => {
       res.redirect('/claims');
     }
-    );
+  );
 
   app.get('/api/logout', (req, res) => {
     req.logout(),
-    res.redirect('/');
+      res.redirect('/');
   });
   app.get('/api/current_user', (req, res) => {
+    //console.log(req.user);
     res.send(req.user);
   });
 };

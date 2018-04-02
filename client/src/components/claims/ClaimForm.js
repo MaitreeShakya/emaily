@@ -4,17 +4,11 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import ClaimField from './ClaimField';
 import { Link } from 'react-router-dom';
-
-const FIELDS = [
-  { label: 'Claim Address', name: 'address' },
-  { label: 'Insured Name', name: 'name' },
-  { label: 'Insured Email', name: 'email' },
-  { label: 'Insurance Compamy', name: 'company' }
-];
+import formFields from './formFields';
 
 class ClaimForm extends Component {
   renderField() {
-    return _.map(FIELDS, ({ label, name }) => {
+    return _.map(formFields, ({ label, name }) => {
       return (
         <Field
           key={name}
@@ -30,7 +24,7 @@ class ClaimForm extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.props.handleSubmit(values => console.log(values))}>
+        <form onSubmit={this.props.handleSubmit(this.props.onClaimSubmit)}>
           {this.renderField()}
           <Link to='/claims' className="red btn-flat white-text">
             Cancel
@@ -47,9 +41,9 @@ class ClaimForm extends Component {
 
 function validate(values) {
   const errors = {};
-  _.each(FIELDS, ({ name }) => {
-    if(!values[name]){
-      errors[name] ="You must provide a value";
+  _.each(formFields, ({ name }) => {
+    if (!values[name]) {
+      errors[name] = "You must provide a value";
     }
   });
   return errors;
@@ -57,5 +51,6 @@ function validate(values) {
 
 export default reduxForm({
   validate,
-  form: 'claimForm'
+  form: 'claimForm',
+  destroyOnUnmount: false,
 })(ClaimForm);

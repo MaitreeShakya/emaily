@@ -6,8 +6,8 @@ class Dashboard extends Component {
       <div>
         <h2>Welcome to DSA Dashboard</h2>
         <div className="fixed-action-btn">
-          <Link to ="/claims/new"class="btn-floating btn-large waves-effect waves-light red">
-            <i class="material-icons">add</i>
+          <Link to ="/claims/new"className="btn-floating btn-large waves-effect waves-light red">
+            <i className="material-icons">add</i>
           </Link>
         </div>
       </div>
