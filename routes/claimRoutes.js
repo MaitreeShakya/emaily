@@ -21,4 +21,12 @@ module.exports = app => {
 
     res.send(claims);
   });
+
+  app.get('/api/claims/:claimAddress', requireLogin, async(req,res)=>{
+    const claim = await Claim.findOne({
+      address: req.params.claimAddress
+    });
+
+    res.send(claim);
+  });
 }
