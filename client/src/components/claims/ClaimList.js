@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchClaim } from '../../actions';
-
+import SearchBar from '../containers/searchBar';
 class ClaimList extends Component {
   componentDidMount() {
     this.props.fetchClaim();
@@ -12,7 +12,7 @@ class ClaimList extends Component {
         <tr key={claim._id}>
           <td>{claim._id}</td>
           <td>{claim.address}</td>
-          <td>{new Date(claim.dateCreated).toLocaleTimeString()}</td>
+          <td>{new Date(claim.dateCreated).toLocaleDateString()}</td>
         </tr>
       );
     });
@@ -20,6 +20,7 @@ class ClaimList extends Component {
   render() {
     return (
       <div>
+        <SearchBar/>
         <div>
           <table className="striped">
             <thead>
