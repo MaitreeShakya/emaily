@@ -1,13 +1,13 @@
-import _ from 'lodash';
 import React from 'react';
+import roomFormFields from './roomFormFields';
+import _ from 'lodash';
 import { connect } from 'react-redux';
-import formFields from './formFields';
 import { Link, withRouter } from 'react-router-dom';
-import * as actions from '../../actions';
+import * as actions from '../../../actions';
 
-const ClaimFormReveiew = ({ onCancel, formValues, submitClaim, history }) => {
-    //console.log(history);
-  const reviewFields = _.map(formFields, ({ name, label }) => {
+const RoomFormReview = ({ onCancel, formValues, submitRoom, history }) => {
+
+  const reviewFields = _.map(roomFormFields, ({ name, label }) => {
     return (
       <div key={name}>
         <label>{label}</label>
@@ -28,7 +28,7 @@ const ClaimFormReveiew = ({ onCancel, formValues, submitClaim, history }) => {
         Back
         </button>
       <Link to='/claims'
-        onClick={() => submitClaim(formValues, history) && alert("Your query has been saved")}
+        onClick={() => submitRoom(formValues, history) && alert("Your query has been saved")}
         className="green btn-flat right white-text">
         Submit
           <i className="material-icons right">save</i>
@@ -38,9 +38,8 @@ const ClaimFormReveiew = ({ onCancel, formValues, submitClaim, history }) => {
 };
 
 function mapStateToProps(state) {
-  //console.log(state);
-  return { formValues: state.form.claimForm.values };
-
+  console.log(state);
+  return { formValues: state.form.roomForm.values };
 }
 
-export default connect(mapStateToProps, actions)(withRouter(ClaimFormReveiew));
+export default connect(mapStateToProps, actions)(withRouter(RoomFormReview));

@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/users');
 require('./models/claims')
+require('./models/rooms');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI);
@@ -24,6 +25,7 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/claimRoutes')(app);
+require('./routes/roomRoutes')(app);
 
 //if in prod use react
 if (process.env.NODE_ENV === 'production') {

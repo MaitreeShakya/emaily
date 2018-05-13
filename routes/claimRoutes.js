@@ -16,17 +16,22 @@ module.exports = app => {
     }).save();
   });
 
-  app.get('/api/claims', requireLogin, async (req, res) => {
-    const claims = await Claim.find();
-
+  app.get('/api/claims', async (req, res) => {
+    const claims = await Claim.find().select({ items: false, rooms: false});
+    //console.log(claims);
     res.send(claims);
   });
 
-  app.get('/api/claims/:claimAddress', requireLogin, async(req,res)=>{
+  app.get('/api/claims/:claimId', async(req,res)=>{
     const claim = await Claim.findOne({
-      address: req.params.claimAddress
+      _id: req.params.claimId
     });
-
     res.send(claim);
+  });
+
+  app.delete('/api/claims/:claimId', async(req,res) =>{
+    await Claim.findOneAndRemove({
+      _id: req.params.claimId
+    });
   });
 }

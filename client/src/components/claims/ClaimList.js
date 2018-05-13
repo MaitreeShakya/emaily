@@ -1,28 +1,34 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchClaim } from '../../actions';
-import SearchBar from '../containers/searchBar';
-class ClaimList extends Component {
-  componentDidMount() {
-    this.props.fetchClaim();
-  }
-  renderClaims() {
-    return this.props.claim.reverse().map(claim => {
+import _ from "lodash";
+import React from 'react';
+import { Link } from 'react-router-dom'
+
+const ClaimList = (props) => {
+  console.log(props.claims);
+  console.log("hello");
+    const renderClaims = _.map(props.claims, claim => {
       return (
         <tr key={claim._id}>
-          <td>{claim._id}</td>
+          <td><Link to={`/claims/${claim._id}`}>{claim._id}</Link></td>
           <td>{claim.address}</td>
-          <td>{new Date(claim.dateCreated).toLocaleTimeString()}</td>
+          <td>{new Date(claim.dateCreated).toLocaleDateString()}</td>
+          <td>
+            <i style={{ cursor: 'pointer' }}
+              className="material-icons"
+              onClick={() => this.onEditClick(claim.address)}
+            >
+              edit
+              </i>
+            <i style={{ cursor: 'pointer' }}
+              className="material-icons"
+              onClick={() => this.onDeleteClick(claim._id)}
+            >
+              delete
+              </i>
+          </td>
         </tr>
       );
     });
-  }
-  render() {
     return (
-      <div>
-        <div>
-          <SearchBar />
-        </div>
         <div>
           <table className="striped">
             <thead>
@@ -30,21 +36,16 @@ class ClaimList extends Component {
                 <th>ClaimID</th>
                 <th>Claim Address</th>
                 <th>Date Created</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {this.renderClaims()}
+              {renderClaims}
             </tbody>
           </table>
         </div>
+    )};
 
-      </div>
-    );
-  }
-}
+    export default ClaimList;
 
-function mapStateToProps({ claim }) {
-  return { claim };
-}
 
-export default connect(mapStateToProps, { fetchClaim })(ClaimList);

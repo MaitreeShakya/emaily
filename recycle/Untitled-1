@@ -1,0 +1,22 @@
+import { connect } from 'react-redux';
+import { fetchClaims, deleteClaim } from '../../actions';
+import SearchBar from '../containers/searchBar';
+  onEditClick(address)
+  {
+    console.log(address);
+  }
+  onDeleteClick(id){
+    this.props.deleteClaim(id, () => {
+      this.props.history.push('/');
+    });
+    //console.log(id);
+  }
+
+  claimSearch(term) {
+    console.log(term);
+  }
+
+  render() {
+    const claimSearch = _.debounce(term => {
+      this.claimSearch(term);
+    }, 300);
