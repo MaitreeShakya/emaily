@@ -4,20 +4,21 @@ import { reduxForm } from 'redux-form';
 import RoomFormReview from './RoomFormReview';
 
 class RoomNew extends Component {
-  state = { showFormReview: false };
+  state = { showFormReview: false, id:"" };
 
-  componentDidMount() {
+  componentWillMount() {
     const { id } = this.props.match.params;
-    console.log(id);
+    this.setState({id});
+    //console.log(id);
   }
 
   renderContent() {
     if (this.state.showFormReview) {
-      return < RoomFormReview
+      return < RoomFormReview id={this.state.id}
         onCancel={() => this.setState({ showFormReview: false })}
       />
     }
-    return <RoomForm id={this.id} onRoomSubmit={() => this.setState({ showFormReview: true })} />
+    return <RoomForm id={this.state.id} onRoomSubmit={() => this.setState({ showFormReview: true })} />
   }
   render() {
     return (

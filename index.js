@@ -26,7 +26,7 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/claimRoutes')(app);
 require('./routes/roomRoutes')(app);
-
+require('./routes/uploadRoutes')(app);
 //if in prod use react
 if (process.env.NODE_ENV === 'production') {
 

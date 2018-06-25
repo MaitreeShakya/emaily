@@ -6,8 +6,8 @@ import RoomField from './RoomField';
 import { Link } from 'react-router-dom';
 
 class RoomForm extends Component {
-  componentDidMount(){
-    console.log(this.props.id);
+  componentDidMount() {
+    //console.log(this.props.id);
   }
   renderField() {
     return _.map(RoomFormFields, ({ label, name }) => {
@@ -40,15 +40,25 @@ class RoomForm extends Component {
   }
 }
 
-function validate(values){
+function validate(values) {
   const errors = {};
-  _.each(RoomFormFields, ({ name })=> {
-    if(!values[name]){
-      errors[name]="You must provide a value";
+  _.each(RoomFormFields, ({ name }) => {
+    if (!values[name]) {
+      errors[name] = "You must provide a value";
     }
   });
   return errors;
 }
+
+// function mapStateToProps(state, ownProps) {
+//   console.log(ownProps.id);
+//   return {
+//     initialValues: {
+//       claimID: ownProps.id
+//     }
+//   }
+// }
+
 export default reduxForm({
   validate,
   form: 'roomForm',

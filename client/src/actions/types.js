@@ -4,3 +4,4 @@ export const FETCH_CLAIM = 'fetch_claim';
 export const DELETE_CLAIM = 'delete_claim';
 export const FETCH_ROOMS = 'fetch_rooms';
 export const DELETE_ROOM= 'delete_room';
+export const GET_URL= 'get_url';

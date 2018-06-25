@@ -5,8 +5,10 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import * as actions from '../../../actions';
 
-const RoomFormReview = ({ onCancel, formValues, submitRoom, history }) => {
+const RoomFormReview = ({ onCancel, formValues, submitRoom, history, id }) => {
 
+  const claimID = id;
+  console.log(claimID);
   const reviewFields = _.map(roomFormFields, ({ name, label }) => {
     return (
       <div key={name}>
@@ -28,7 +30,7 @@ const RoomFormReview = ({ onCancel, formValues, submitRoom, history }) => {
         Back
         </button>
       <Link to='/claims'
-        onClick={() => submitRoom(formValues, history) && alert("Your query has been saved")}
+        onClick={() => submitRoom(formValues, claimID, history) && alert("Your query has been saved")}
         className="green btn-flat right white-text">
         Submit
           <i className="material-icons right">save</i>

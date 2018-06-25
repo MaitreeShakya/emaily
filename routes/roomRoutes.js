@@ -5,7 +5,6 @@ const Room = mongoose.model('rooms');
 
 module.exports = app => {
   app.post('/api/rooms', (req, res) => {
-
     const { claimID, roomName, roomSize, floorType, age, subFloor, underlay, done } = req.body
 
     const room = new Room({
@@ -19,7 +18,6 @@ module.exports = app => {
   });
 
   app.get('/api/rooms', async(req, res) => {
-    console.log(req.body);
     const rooms = await Room.find();
 
     res.send(rooms);

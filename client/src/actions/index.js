@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { FETCH_USER, FETCH_CLAIMS, FETCH_CLAIM, DELETE_CLAIM, FETCH_ROOMS } from './types';
+import { FETCH_USER, FETCH_CLAIMS, FETCH_CLAIM, DELETE_CLAIM, FETCH_ROOMS, GET_URL } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get(`/api/current_user`);
@@ -40,4 +40,14 @@ export const submitRoom = (values, history) => async dispatch => {
 export const fetchRooms = () => async dispatch => {
   const res = await axios.get('/api/rooms');
   dispatch({ type: FETCH_ROOMS, payload: res });
+}
+
+export const getURL = (file) => async dispatch => {
+ const uploadConfig = await axios.get('/api/upload');
+
+  const upload = await axios.put(uploadConfig.data.url, file, {
+    headers: {
+      'Content-Type': file.type
+    }
+  });
 }

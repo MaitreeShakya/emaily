@@ -6,16 +6,14 @@ import { connect } from 'react-redux';
 
 class Dashboard extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     //console.log('hello from component');
     this.props.fetchClaims();
-    console.log(this.claim);
-    console.log("from dashboard")
-  }
+   }
   render() {
     return (
       <div>
-        <ClaimList claims={this.claim} />
+        <ClaimList claims={this.props.claim} />
         <div className="fixed-action-btn">
           <Link to="/claims/new" className="btn-floating btn-large waves-effect waves-light red">
             <i title="Add Claim" className="material-icons">add</i>
