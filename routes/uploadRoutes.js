@@ -14,7 +14,7 @@ module.exports = app => {
       'putObject',
       {
         Bucket: 'claim-photos',
-        ContentType: 'image/jpeg',
+        ContentType: 'image/*',
         Key: key
       },
       (err, url) => res.send({ key, url })

@@ -22,7 +22,7 @@ class RoomList extends Component {
     // this.setState({ file: event.target.files[0] });
     // console.log(this.state.file);
     const image = event.target.files;
-    console.log(image.type);
+    //console.log(image.type);
      this.props.getURL(event.target.files);
   }
   renderList() {

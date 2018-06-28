@@ -1,6 +1,6 @@
 import axios from 'axios';
-
 import { FETCH_USER, FETCH_CLAIMS, FETCH_CLAIM, DELETE_CLAIM, FETCH_ROOMS, GET_URL } from './types';
+const mime = require('mime-types');
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get(`/api/current_user`);
@@ -44,10 +44,10 @@ export const fetchRooms = () => async dispatch => {
 
 export const getURL = (file) => async dispatch => {
  const uploadConfig = await axios.get('/api/upload');
-
+ //console.log(mime.contentType(file));
   const upload = await axios.put(uploadConfig.data.url, file, {
     headers: {
-      'Content-Type': file.type
+      'Content-Type': 'image/*'
     }
   });
 }
