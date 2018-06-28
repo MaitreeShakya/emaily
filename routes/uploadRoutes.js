@@ -13,7 +13,7 @@ module.exports = app => {
     s3.getSignedUrl(
       'putObject',
       {
-        Bucket: 'claim-photos',
+        Bucket: 'dsa-claim-photos-prod',
         ContentType: 'image/*',
         Key: key
       },
