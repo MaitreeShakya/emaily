@@ -44,6 +44,7 @@ export const fetchRooms = () => async dispatch => {
 
 export const getURL = (file) => async dispatch => {
  const uploadConfig = await axios.get('/api/upload');
+ console.log(file);
  console.log(uploadConfig);
   const upload = await axios.put(uploadConfig.data.url, file, {
     headers: {
